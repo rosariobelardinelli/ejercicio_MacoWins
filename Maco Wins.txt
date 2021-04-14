@@ -1,0 +1,77 @@
+--Requerimientos--
+    - Saber el precio de venta de una prenda
+    - Saber el tipo de la prenda
+    - Saber las ganancias de un determinado día
+
+--Solución en pseudocódigo--
+
+class Prenda {
+    const tipo
+    var estado
+    var precioPropio
+
+    method precio(precioPropio){
+        estado.precio(precioPropio)
+    }
+    
+}
+
+class Estado {
+    method precio(precioPropio)
+}
+
+class Nueva inherits Estado {
+    override method precio(precioPropio){
+        return precioPropio
+    }
+}
+
+class Promocion inherits Estado {
+    var property descuento
+
+    override method precio(precioPropio){
+        return precioPropio - descuento
+    }
+}
+
+class Liquidacion inherits Estado {
+    override method precio(precioPropio){
+        return precioPropio * 0.5
+    }
+}
+
+class Venta {
+    var prendas = []
+    const fecha
+    var medioDePago
+    
+    method cantidadPrendas(){
+        return prendas.size()
+    }
+
+    method total(){
+        const precioFinal
+        precioFinal = prendas.foreach({prenda -> prenda.precio()}).sum() //sumar los elementos de la lista
+        return precioFinal
+    }
+
+    method cobro(){
+        return medioDePago.cobro(self.total())
+    }
+
+}
+
+object tarjeta {totalcob
+    var cuotas
+    const coeficienteFijo
+
+    method cobro(total){
+        return total + (cuotas * coeficienteFijo + 0.01 * total)
+    }
+}
+
+object efectivo {
+    method cobro(total){
+        return total
+    }
+}
